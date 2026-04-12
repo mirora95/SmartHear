@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-android-primary: #007bff;
+  --color-android-surface: #ffffff;
+  --color-android-background: #f8f9fa;
+  --color-android-error: #dc3545;
+  --color-android-warning: #ffc107;
+  --color-android-success: #28a745;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-android-background text-slate-900 antialiased overflow-hidden;
+    font-family: var(--font-sans);
+  }
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes pulse-red {
+  0% { background-color: rgba(220, 53, 69, 0); }
+  50% { background-color: rgba(220, 53, 69, 0.2); }
+  100% { background-color: rgba(220, 53, 69, 0); }
+}
+
+.alert-pulse {
+  animation: pulse-red 1s infinite;
+}
