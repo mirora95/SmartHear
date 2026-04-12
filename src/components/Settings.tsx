@@ -97,7 +97,7 @@ export default function Settings({ sensitivity, setSensitivity, isSleepMode, set
         </div>
 
         <div className="pt-4 text-center">
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">SmartHear v1.0.0</p>
+          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">HEARLY v1.0.0</p>
           <p className="text-[10px] text-slate-300 mt-1">Technovation Project 2026</p>
         </div>
       </div>

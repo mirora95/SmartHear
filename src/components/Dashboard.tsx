@@ -37,7 +37,7 @@ export default function Dashboard({ db, detectedSound, threshold, isMonitoring, 
     <div className="flex flex-col items-center space-y-8">
       <header className="w-full flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">SmartHear</h1>
+          <h1 className="text-3xl font-bold tracking-tight">HEARLY</h1>
           <p className="text-slate-500">Live Sound Monitoring</p>
         </div>
         <button 

@@ -1,6 +1,6 @@
-# 🎧 SmartHear
+# 🎧 HEARLY
 
-**SmartHear** is an AI-powered Android application designed to help users stay aware of important sounds in their environment.
+**HEARLY** is an AI-powered Android application designed to help users stay aware of important sounds in their environment.
 
 It is especially useful for:
 
@@ -8,6 +8,12 @@ It is especially useful for:
 * People wearing headphones
 * Students, workers, and gamers
 * Anyone who wants extra safety and awareness
+
+## Demo Live
+
+Live demo:
+
+https://mirora95.github.io/SmartHear/
 
 ---
 
@@ -27,7 +33,7 @@ This can lead to safety risks, stress, and communication problems.
 
 ## 💡 Solution
 
-SmartHear uses the phone’s microphone and AI to:
+HEARLY uses the phone’s microphone and AI to:
 
 * detect sounds in real time
 * classify what the sound is
@@ -106,7 +112,7 @@ SmartHear uses the phone’s microphone and AI to:
 
 ## 🤖 AI Component
 
-SmartHear uses AI to:
+HEARLY uses AI to:
 
 * classify environmental sounds
 * detect meaningful events
@@ -125,7 +131,7 @@ SmartHear uses AI to:
 
 ## 🌍 Impact
 
-SmartHear improves:
+HEARLY improves:
 
 * accessibility
 * safety

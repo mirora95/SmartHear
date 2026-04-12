@@ -1,5 +1,5 @@
 {
-  "name": "SmartHear",
+  "name": "HEARLY",
   "description": "AI-powered accessibility and safety app for sound detection and classification.",
   "requestFramePermissions": ["microphone"]
 }
