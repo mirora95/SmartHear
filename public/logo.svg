@@ -1,0 +1,53 @@
+<svg width="768" height="768" viewBox="0 0 768 768" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="earGradient" x1="184" y1="120" x2="594" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2AD7C9"/>
+      <stop offset="0.52" stop-color="#23B5F1"/>
+      <stop offset="1" stop-color="#1573E6"/>
+    </linearGradient>
+    <linearGradient id="waveGradient" x1="187" y1="381" x2="493" y2="381" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDBB2D"/>
+      <stop offset="0.34" stop-color="#FF8A3D"/>
+      <stop offset="0.55" stop-color="#F25C7A"/>
+      <stop offset="0.78" stop-color="#C133B9"/>
+      <stop offset="1" stop-color="#A92EEA"/>
+    </linearGradient>
+    <filter id="softShadow" x="128" y="90" width="482" height="572" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="768" height="768" rx="160" fill="#F8FAFC"/>
+
+  <g filter="url(#softShadow)">
+    <path
+      d="M220 327C220 206 318 128 436 128C542 128 616 203 616 307C616 424 551 503 496 567C451 620 430 656 430 704"
+      stroke="url(#earGradient)"
+      stroke-width="32"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M287 534C270 565 264 591 264 615C264 682 319 736 388 736C451 736 494 697 525 640"
+      stroke="url(#earGradient)"
+      stroke-width="32"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M509 353C526 313 530 269 515 229C489 160 418 125 349 148C301 164 262 202 239 248"
+      stroke="url(#earGradient)"
+      stroke-width="30"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M187 381H259C268 381 276 374 279 365L290 332C293 322 307 322 310 332L330 430C333 442 349 442 352 430L378 286C381 273 399 273 402 286L428 437C431 448 446 449 451 438L468 392C471 385 478 381 485 381H493"
+      stroke="url(#waveGradient)"
+      stroke-width="18"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

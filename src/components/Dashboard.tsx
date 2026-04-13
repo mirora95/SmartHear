@@ -36,9 +36,16 @@ export default function Dashboard({ db, detectedSound, threshold, isMonitoring, 
   return (
     <div className="flex flex-col items-center space-y-8">
       <header className="w-full flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">HEARLY</h1>
-          <p className="text-slate-500">Live Sound Monitoring</p>
+        <div className="flex items-center gap-3">
+          <img
+            src={`${import.meta.env.BASE_URL}logo.svg`}
+            alt="HEARLY logo"
+            className="h-14 w-14 rounded-2xl bg-white p-1 shadow-sm ring-1 ring-slate-100"
+          />
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">HEARLY</h1>
+            <p className="text-slate-500">Live Sound Monitoring</p>
+          </div>
         </div>
         <button 
           onClick={toggleMonitoring}
