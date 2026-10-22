@@ -20,8 +20,11 @@ If you want real Gemini-powered classification in production, use a backend or s
 
 The repository now includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
 
-When you push to the `main` branch, it will:
+The workflow runs on pushes to `master` (the default branch) or when manually dispatched. It will:
 
 * install dependencies
 * build the site
+* copy `dist/app.html` to `dist/index.html` so the Pages root opens the app
 * publish the built `dist` folder to GitHub Pages
+
+The Vite base path and service-worker fallback are configured for `/SmartHear/`. For local setup and preview URLs, see [Local development](README.md#local-development).
