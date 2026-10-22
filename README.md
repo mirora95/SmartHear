@@ -36,7 +36,7 @@ npm run build
 npm run preview
 ```
 
-`lint` runs TypeScript checking (`tsc --noEmit`). There is currently no automated test script. Open **http://localhost:4173/SmartHear/app.html** for the production preview, or use the port printed by Vite if that port is busy. The build writes to `dist/`, which contains tracked generated files; review those changes before committing.
+`lint` runs TypeScript checking (`tsc --noEmit`). Open **http://localhost:4173/SmartHear/app.html** for the production preview, or use the port printed by Vite if that port is busy. The build writes to `dist/`, which contains tracked generated files; review those changes before committing.
 
 ### Browser checks and current limits
 
