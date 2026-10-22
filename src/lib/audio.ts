@@ -38,6 +38,7 @@ export class AudioMonitor {
 
       update();
     } catch (error) {
+      this.stop();
       console.error('Error accessing microphone:', error);
       throw error;
     }
