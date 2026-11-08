@@ -4,10 +4,18 @@ export class AudioMonitor {
   private stream: MediaStream | null = null;
   private source: MediaStreamAudioSourceNode | null = null;
   private animationFrame: number | null = null;
+  private startVersion = 0;
 
   async start(onData: (db: number, freq: number[]) => void) {
+    this.stop();
+    const version = this.startVersion;
     try {
-      this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      if (version !== this.startVersion) {
+        stream.getTracks().forEach(track => track.stop());
+        return false;
+      }
+      this.stream = stream;
       this.audioContext = new AudioContext();
       this.analyser = this.audioContext.createAnalyser();
       this.analyser.fftSize = 256;
@@ -18,7 +26,7 @@ export class AudioMonitor {
       const dataArray = new Uint8Array(bufferLength);
 
       const update = () => {
-        if (!this.analyser) return;
+        if (version !== this.startVersion || !this.analyser) return;
         this.analyser.getByteFrequencyData(dataArray);
         
         // Calculate average volume
@@ -37,7 +45,9 @@ export class AudioMonitor {
       };
 
       update();
+      return version === this.startVersion;
     } catch (error) {
+      if (version !== this.startVersion) return false;
       this.stop();
       console.error('Error accessing microphone:', error);
       throw error;
@@ -45,6 +55,8 @@ export class AudioMonitor {
   }
 
   stop() {
+    // Invalidate permission requests that have not returned a stream yet.
+    this.startVersion++;
     if (this.animationFrame) cancelAnimationFrame(this.animationFrame);
     if (this.source) this.source.disconnect();
     if (this.stream) this.stream.getTracks().forEach(track => track.stop());
@@ -54,5 +66,6 @@ export class AudioMonitor {
     this.analyser = null;
     this.stream = null;
     this.source = null;
+    this.animationFrame = null;
   }
 }

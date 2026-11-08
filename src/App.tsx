@@ -96,7 +96,7 @@ export default function App() {
       setDetectedSound('quiet');
     } else {
       audioMonitor.current.start(handleAudioData)
-        .then(() => setIsMonitoring(true))
+        .then(started => { if (started) setIsMonitoring(true); })
         .catch(() => toast.error("Microphone access denied"));
     }
   };
