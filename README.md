@@ -40,6 +40,8 @@ npm run preview
 
 ### Browser checks and current limits
 
+For review of the pending microphone cleanup changes, use the [audio-startup acceptance guide](docs/audio-startup-acceptance.md). It separates manual observations from automated lifecycle coverage and identifies which checkout supplies the tests.
+
 * Allow microphone access, start monitoring from the Dashboard, confirm that the level changes, then stop monitoring. Microphone access requires a secure context: use `localhost` on your computer or HTTPS on another device, rather than an HTTP LAN address.
 * Open Settings and adjust the sound threshold; return to the Dashboard to try it. The displayed "dB" value is a relative 0-100 level calculated from microphone frequency data, not a calibrated sound-pressure measurement.
 * Without an API key, sound labels come from local frequency/volume heuristics. They are not a trained sound-recognition model or a reliable emergency alarm detector.
