@@ -1,0 +1,38 @@
+name: Classification checks
+
+on:
+  pull_request:
+    paths:
+      - 'src/lib/gemini.ts'
+      - 'src/types.ts'
+      - 'tests/classification.test.ts'
+      - 'package*.json'
+      - '.github/workflows/classification-checks.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'src/lib/gemini.ts'
+      - 'src/types.ts'
+      - 'tests/classification.test.ts'
+      - 'package*.json'
+      - '.github/workflows/classification-checks.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  classification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx --no-install tsx --test tests/classification.test.ts
+      - run: npm run lint
+      - run: npm run build
