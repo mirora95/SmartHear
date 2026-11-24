@@ -2,6 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { SoundType } from "../types";
 
 let ai: GoogleGenAI | null = null;
+const soundTypes: SoundType[] = ['baby crying', 'dog barking', 'siren', 'alarm', 'door knock', 'human speech', 'loud noise', 'quiet'];
 
 function getApiKey(): string {
   return process.env.GEMINI_API_KEY ?? '';
@@ -57,8 +58,8 @@ export async function classifySound(db: number, frequencyData: number[]): Promis
       }
     });
 
-    const label = response.text?.toLowerCase().trim() as SoundType;
-    return label || getFallbackClassification(db, frequencyData);
+    const label = response.text?.toLowerCase().trim();
+    return soundTypes.find(type => type === label) ?? getFallbackClassification(db, frequencyData);
   } catch (error) {
     console.error('Gemini classification error:', error);
     return getFallbackClassification(db, frequencyData);
