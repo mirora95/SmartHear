@@ -168,3 +168,44 @@ test('restarting an active monitor releases its previous resources', async () =>
   monitor.stop();
   assert.equal(stopTrack.mock.callCount(), 2);
 });
+
+test('cancels a pending frame whose handle is zero', async () => {
+  const stopTrack = installMicrophone();
+  const { cancelFrame, closeContext } = installAudioContext();
+  setGlobal('requestAnimationFrame', () => 0);
+  const monitor = new AudioMonitor();
+
+  await monitor.start(() => {});
+  monitor.stop();
+
+  assert.deepEqual(cancelFrame.mock.calls.map(call => call.arguments), [[0]]);
+  assert.equal(stopTrack.mock.callCount(), 1);
+  assert.equal(closeContext.mock.callCount(), 1);
+});
+
+for (const stopOnSample of [1, 2]) {
+  test(`does not schedule another frame when sample ${stopOnSample}'s callback stops monitoring`, async () => {
+    const stopTrack = installMicrophone();
+    const { closeContext } = installAudioContext();
+    let nextFrame!: FrameRequestCallback;
+    const scheduleFrame = mock.fn((callback: FrameRequestCallback) => {
+      nextFrame = callback;
+      return 1;
+    });
+    setGlobal('requestAnimationFrame', scheduleFrame);
+    const monitor = new AudioMonitor();
+    let samples = 0;
+    const onData = mock.fn(() => {
+      if (++samples === stopOnSample) monitor.stop();
+    });
+
+    const started = await monitor.start(onData);
+    if (stopOnSample === 2) nextFrame(0);
+
+    assert.equal(started, stopOnSample !== 1);
+    assert.equal(onData.mock.callCount(), stopOnSample);
+    assert.equal(stopTrack.mock.callCount(), 1);
+    assert.equal(closeContext.mock.callCount(), 1);
+    assert.equal(scheduleFrame.mock.callCount(), stopOnSample - 1);
+  });
+}

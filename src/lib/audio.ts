@@ -41,6 +41,7 @@ export class AudioMonitor {
         
         // Pass both db and frequency data
         onData(db, Array.from(dataArray));
+        if (version !== this.startVersion) return;
         this.animationFrame = requestAnimationFrame(update);
       };
 
@@ -57,7 +58,7 @@ export class AudioMonitor {
   stop() {
     // Invalidate permission requests that have not returned a stream yet.
     this.startVersion++;
-    if (this.animationFrame) cancelAnimationFrame(this.animationFrame);
+    if (this.animationFrame !== null) cancelAnimationFrame(this.animationFrame);
     if (this.source) this.source.disconnect();
     if (this.stream) this.stream.getTracks().forEach(track => track.stop());
     if (this.audioContext) this.audioContext.close();
